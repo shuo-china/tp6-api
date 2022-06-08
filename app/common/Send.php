@@ -24,7 +24,7 @@ trait Send
     /**
      * 失败响应
      */
-    public static function error($code = '', $message = '', $detail = [], $header = [])
+    public static function error($code = '', $message = '', $debug = [], $header = [])
     {
         $responseData = [
             'code'    => $code,
@@ -32,7 +32,7 @@ trait Send
         ];
 
         if (env('APP_DEBUG')) {
-            $responseData['detail'] = $detail;
+            $responseData['debug'] = $debug;
         }
 
         self::response($responseData, 200, $header);
